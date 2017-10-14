@@ -8,7 +8,7 @@ describe "Static_pages" do
       expect(page).to have_content('Sample_app')
     end
 
-    it "titleが正しく表示されていること" do
+    it "titleに'tutorial | Home' が含まれていること" do
       visit 'static_pages/home'
       expect(page).to have_title("tutorial | Home")
     end
@@ -20,7 +20,7 @@ describe "Static_pages" do
       expect(page).to have_content('helpのページ')
     end
 
-    it "titleが正しく表示されていること" do
+    it "titleに'tutorial | Help' が含まれていること" do
       visit 'static_pages/help'
       expect(page).to have_title("tutorial | Help")
     end
@@ -32,9 +32,21 @@ describe "Static_pages" do
       expect(page).to have_content('About Us')
     end
 
-    it "titleが正しく表示されていること" do
+    it "titleに'tutorial | About Us' が含まれていること" do
       visit 'static_pages/about'
       expect(page).to have_title("tutorial | About Us")
+    end
+  end
+
+  describe "Contact Page" do
+    it "'Contact'の文言が含まれていること" do
+      visit 'static_pages/contact'
+      expect(page).to have_content('Contact')
+    end
+
+    it "titleに'tutorial | Contact' が含まれていること" do
+      visit 'static_pages/contact'
+      expect(page).to have_title("tutorial | Contact")
     end
   end
 
