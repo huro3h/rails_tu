@@ -61,6 +61,7 @@ group :development, :test do
 
   # for Rspec test
   gem "factory_girl_rails"
+  gem 'fuubar'
   gem "guard-rspec"
   gem "rspec-rails"
   gem "spring-commands-rspec"
