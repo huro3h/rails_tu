@@ -51,3 +51,6 @@ doc/
 .DS_Store
 .idea
 secret.yml
+config/database.yml
+config/master.key
+config/credentials.yml.enc
