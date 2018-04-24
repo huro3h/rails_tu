@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe Micropost do
   describe 'content' do
-    let(:within140) { Micropost.new(content: 'a' * 140) }
-    let(:over141) { Micropost.new(content: 'a' * 141) }
+    let!(:user) { User.create(email: 'sample@sample.com') }
+    let(:within140) { Micropost.new(user_id: user.id, content: 'a' * 140) }
+    let(:over141) { Micropost.new(user_id: user.id, content: 'a' * 141) }
 
     it '140文字以下の値は有効であること' do
       expect(within140).to be_valid
