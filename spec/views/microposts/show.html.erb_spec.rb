@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "microposts/show", type: :view do
   before(:each) do
+    user = User.create(email: 'aaa@sample.com')
     @micropost = assign(:micropost, Micropost.create!(
-      :content => "MyText",
-      :user_id => 2
+      content: "MyText",
+      user_id: user.id
     ))
   end
 
