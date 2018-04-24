@@ -60,6 +60,8 @@ gem 'dotenv-rails'
 group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'hirb'
+  gem 'hirb-unicode'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.7'
 end
