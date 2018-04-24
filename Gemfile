@@ -60,5 +60,6 @@ gem 'dotenv-rails'
 group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.7'
 end
