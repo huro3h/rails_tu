@@ -10,7 +10,7 @@ describe Micropost do
     end
 
     it '141文字以上の値は有効でないこと' do
-      expect(over140).to_not be_valid
+      expect(over141).to_not be_valid
     end
   end
 end
