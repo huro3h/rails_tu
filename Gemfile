@@ -64,4 +64,10 @@ group :development, :test do
   gem 'hirb-unicode'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.7'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
