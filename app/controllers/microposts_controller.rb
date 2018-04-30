@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+  before_action :set_micropost, only: %i[edit update sdestroy]
 
   # GET /microposts
   # GET /microposts.json

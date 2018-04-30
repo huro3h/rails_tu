@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[edit update destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.where.not(id: nil)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.includes(:microposts).find(params[:id])
   end
 
   # GET /users/new
