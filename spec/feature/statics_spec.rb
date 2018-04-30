@@ -17,5 +17,13 @@ feature "staticsページ" do
       expect(page).to have_selector 'a', text: 'Rails_tu_help'
       expect(page).to have_selector 'a', text: 'Rails_tu_ebook'
     end
+
+    scenario 'aboutページにタイトル,各リンクが表示されていること' do
+      visit 'statics/about'
+      expect(page).to have_content 'Rails_tu statics/about'
+      expect(page).to have_content "公式root"
+      expect(page).to have_content "公式help"
+      expect(page).to have_content "公式ebook"
+    end
   end
 end
