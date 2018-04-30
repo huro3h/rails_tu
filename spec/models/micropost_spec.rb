@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Micropost do
   describe 'content' do
-    let!(:user) { User.create(email: 'sample@sample.com') }
+    let!(:user) { create(:user) }
     let(:within140) { Micropost.new(user_id: user.id, content: 'a' * 140) }
     let(:over141) { Micropost.new(user_id: user.id, content: 'a' * 141) }
 
