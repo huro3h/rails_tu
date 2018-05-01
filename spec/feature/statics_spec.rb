@@ -25,5 +25,10 @@ feature "staticsページ" do
       expect(page).to have_content "公式help"
       expect(page).to have_content "公式ebook"
     end
+
+    scenario 'contactページに正しいタイトルが表示されていること' do
+      visit 'statics/contact'
+      expect(page).to have_title "contact | rails_tu"
+    end
   end
 end
