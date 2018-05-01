@@ -29,6 +29,8 @@ feature "staticsページ" do
     scenario 'contactページに正しいタイトルが表示されていること' do
       visit 'statics/contact'
       expect(page).to have_title "contact | rails_tu"
+      expect(page).to have_selector 'a', text: '公式contact'
+
     end
   end
 end
