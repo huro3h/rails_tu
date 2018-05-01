@@ -7,8 +7,8 @@ feature "rootページ" do
       expect(page).to_not have_content "Hello, Rails 5.2"
     end
 
-    scenario 'users#indexページへ遷移すること' do
-      expect(page).to have_content "Users"
+    scenario 'statics#homeページへ遷移すること' do
+      expect(page).to have_content "Rails_tu statics/home"
     end
   end
 end
