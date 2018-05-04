@@ -55,3 +55,4 @@ config/database.yml
 config/master.key
 config/credentials.yml.enc
 vendor/assets/bower_components
+public/assets
