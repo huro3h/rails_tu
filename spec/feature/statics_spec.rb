@@ -2,7 +2,6 @@ require "rails_helper"
 
 feature "staticsページ" do
   context 'statics各ページにアクセスした時' do
-
     scenario 'タイトル及び公式help/ebookへのリンクが表示されていること' do
       visit '/help'
       expect(page).to have_content "Rails_tu statics/help"
