@@ -37,6 +37,12 @@ jobs:
         key: *bundle_cache_key
         paths: vendor/bundle
 
+      # bower install
+      - run: sudo npm install bower -g
+
+      # Install packages via bower-rails
+      - run: bundle exec rails bower:install
+
       # Wait for DB
       - run:
           name: Wait for DB
