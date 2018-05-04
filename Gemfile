@@ -56,6 +56,7 @@ gem 'tzinfo-data'
 
 ### additional gems
 gem 'dotenv-rails'
+gem 'bower-rails'
 
 group :development, :test do
   gem 'capybara'
