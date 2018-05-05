@@ -47,6 +47,7 @@ describe User do
 
   it '重複したメールアドレスは無効であること' do
     duplicate_user = user.dup
+    duplicate_user.email = duplicate_user.email.upcase
     user.save
     expect(duplicate_user.save).to eq false
   end
