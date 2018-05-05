@@ -36,4 +36,12 @@ describe User do
     user.email = "a" * 244 + "@example.com"
     expect(user.save).to eq false
   end
+
+  it '定形に沿わないemailは有効でないこと' do
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.foo@bar_baz.com foo@bar+baz.com]
+    invalid_addresses.each do |invalid_address|
+      user.email = invalid_address
+      expect(user.save).to eq false
+    end
+  end
 end
