@@ -51,4 +51,10 @@ describe User do
     user.save
     expect(duplicate_user.save).to eq false
   end
+
+  it 'ユーザー作成時、メールアドレスは小文字に変換されること' do
+    user.email = "FOO@EXAMPLE.COM"
+    user.save
+    expect(user.email).to eq "foo@example.com"
+  end
 end
