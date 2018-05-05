@@ -1,26 +1,34 @@
 <% provide(:title, @user.name) %>
 <p id="notice"><%= notice %></p>
 
-<p><%= gravatar_for @user %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Signup_date:</strong>
-  <%= @user.created_at.strftime("%d/%m/%Y") %>
-</p>
-<br>
-<strong>Post一覧: </strong>
-<% @user.microposts.find_each do |micropost| %>
-  <p><%= micropost.id %> - <%= micropost.content %></p>
-<% end %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h4>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h4>
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <strong>Signup_date:</strong>
+        <%= @user.created_at.strftime("%d/%m/%Y") %>
+      </p>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <strong>Post一覧: </strong>
+    <% @user.microposts.find_each do |micropost| %>
+      <p><%= micropost.id %> - <%= micropost.content %></p>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
