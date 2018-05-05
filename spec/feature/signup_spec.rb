@@ -22,7 +22,7 @@ feature 'signupページ' do
       click_button 'Create my account'
 
       expect(page).to have_css '.alert-danger'
-      expect(current_path).to eq users_path
+      expect(current_path).to eq signup_path
     end
   end
 end
