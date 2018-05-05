@@ -27,21 +27,27 @@ describe User do
     expect(user.save).to eq false
   end
 
-  it '255文字以下のemailは有効であること' do
+  it '255文字以下のメールアドレスは有効であること' do
     user.email = "a" * 243 + "@example.com"
     expect(user.save).to eq true
   end
 
-  it '256文字以上のemailは有効でないこと' do
+  it '256文字以上のメールアドレスは無効であること' do
     user.email = "a" * 244 + "@example.com"
     expect(user.save).to eq false
   end
 
-  it '定形に沿わないemailは有効でないこと' do
+  it '定形に沿わないメールアドレスは無効であること' do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
       user.email = invalid_address
       expect(user.save).to eq false
     end
+  end
+
+  it '重複したメールアドレスは無効であること' do
+    duplicate_user = user.dup
+    user.save
+    expect(duplicate_user.save).to eq false
   end
 end
