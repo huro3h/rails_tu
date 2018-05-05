@@ -1,5 +1,7 @@
+<% provide(:title, @user.name) %>
 <p id="notice"><%= notice %></p>
 
+<p><%= gravatar_for @user %></p>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -9,10 +11,15 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<p>
+  <strong>Signup_date:</strong>
+  <%= @user.created_at.strftime("%d/%m/%Y") %>
+</p>
 <br>
 <strong>Post一覧: </strong>
 <% @user.microposts.find_each do |micropost| %>
-  <p><%= micropost.content %></p>
+  <p><%= micropost.id %> - <%= micropost.content %></p>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
