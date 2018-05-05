@@ -9,6 +9,10 @@
         <%= @user.name %>
       </h4>
       <p>
+        <strong>ID:</strong>
+        <%= @user.id %>
+      </p>
+      <p>
         <strong>Name:</strong>
         <%= @user.name %>
       </p>
@@ -17,7 +21,7 @@
         <%= @user.email %>
       </p>
       <p>
-        <strong>Signup_date:</strong>
+        <strong>Signup date:</strong>
         <%= @user.created_at.strftime("%d/%m/%Y") %>
       </p>
     </section>
