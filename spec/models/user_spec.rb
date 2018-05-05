@@ -57,4 +57,15 @@ describe User do
     user.save
     expect(user.email).to eq "foo@example.com"
   end
+
+  it 'パスワードは必須項目であること' do
+    user.password = ""
+    user.password_confirmation = ""
+    expect(user.save).to eq false
+  end
+
+  it '8文字以下のパスワードは無効であること' do
+    user.password = "pass"
+    expect(user.save).to eq false
+  end
 end
