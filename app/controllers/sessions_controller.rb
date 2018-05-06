@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email].downcase)
     if user && user.authenticate(params[:password])
       flash.now[:success] = 'ログインしました'
-      puts "success!"
+      log_in user
+      redirect_to user
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      puts "failed..."
       render 'new'
     end
   end
