@@ -6,5 +6,9 @@ feature "loginページ" do
     scenario 'ログインフォームが表示されていること' do
       expect(page).to have_content 'Log in'
     end
+
+    scenario 'signupページへのリンクが表示されていること' do
+      expect(page).to have_link('Sign up now!', href: '/signup')
+    end
   end
 end
