@@ -13,7 +13,7 @@ feature "loginページ" do
       expect(page).to have_link('Sign up now!', href: '/signup')
     end
 
-    scenario 'ログイン失敗の際、ページ遷移によるフラッシュ表示が適切にされていること' do
+    scenario 'ログイン失敗の後、ページ遷移によるフラッシュ表示が適切にされていること' do
       fill_in "Email", with: ""
       fill_in "Password", with: ""
       click_button "Log in"
@@ -36,7 +36,7 @@ feature "loginページ" do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
       click_button "Log in"
-      expect(page).to have_content "Logout"
+      expect(page).to have_content "Log out"
     end
   end
 end
