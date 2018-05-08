@@ -1,8 +1,10 @@
 require "rails_helper"
+require "application_controller"
 
 feature "loginページ" do
   context 'loginページにアクセスした時' do
     before { visit '/login' }
+    let(:user) { create(:user) }
     scenario 'ログインフォームが表示されていること' do
       expect(page).to have_content 'Log in'
     end
@@ -19,6 +21,22 @@ feature "loginページ" do
       expect(page).to have_css(".alert-danger")
       visit "/"
       expect(page).to_not have_css(".alert-danger")
+    end
+
+    scenario '正常にログインできること' do
+      visit '/login'
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Log in"
+      expect(page).to have_current_path "/users/#{user.id}"
+    end
+
+    scenario 'ログイン後、ログアウトのリンクが表示されていること' do
+      visit '/login'
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Log in"
+      expect(page).to have_content "Logout"
     end
   end
 end
