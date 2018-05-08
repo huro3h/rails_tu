@@ -64,6 +64,7 @@ group :development, :test do
   gem 'faker'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.7'
   gem 'spring-commands-rspec'
