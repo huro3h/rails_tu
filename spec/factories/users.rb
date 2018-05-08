@@ -5,6 +5,7 @@ FactoryBot.define do
     # password Faker::Internet.password
     password "password"
     password_confirmation "password"
+    password_digest User.digest('password')
 
     trait :nil_name do
       name nil
