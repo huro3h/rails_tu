@@ -5,8 +5,9 @@ require "application_controller"
 
 feature "loginページ" do
   context 'loginページにアクセスした時' do
+    let!(:user) { create(:user) }
     before { visit '/login' }
-    let(:user) { create(:user) }
+
     scenario 'ログインフォームが表示されていること' do
       expect(page).to have_content 'Log in'
     end
@@ -30,7 +31,7 @@ feature "loginページ" do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
       click_button "Log in"
-      expect(page).to have_current_path user_path(user)
+      expect(current_path).to eq user_path(user)
     end
 
     scenario 'ログイン後、ログアウトのリンクが表示されていること' do
