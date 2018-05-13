@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
 
@@ -26,16 +28,12 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user } # , notice: 'User was successfully created.'
-        flash[:success] = "Welcome"
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome"
+      redirect_to @user # , notice: 'User was successfully created.'
+    else
+      render :new
     end
   end
 

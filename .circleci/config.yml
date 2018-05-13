@@ -48,13 +48,14 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
+      # Test DB config file
       - run: cp .circleci/database.yml config/database.yml
 
       # Setup the database
       - run: RAILS_ENV=test bundle exec rake db:create
 
-      # Setup the environment
-      - run: bin/rails db:schema:load --trace
+      # DB migration with ridgepole
+      - run: bundle exec ridgepole -E test -c config/database.yml --apply -f db/Schemafile
 
       # Run the tests
       - run: bundle exec rspec spec/ --require spec_helper --format documentation --color
