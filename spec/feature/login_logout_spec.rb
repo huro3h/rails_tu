@@ -34,12 +34,15 @@ feature "loginページ" do
       expect(current_path).to eq user_path(user)
     end
 
-    scenario 'ログイン後、ログアウトのリンクが表示されていること' do
+    scenario 'ログイン〜ログアウトが正常に行われること' do
       visit '/login'
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
       click_button "Log in"
       expect(page).to have_content "Log out"
+
+      click_link "Log out"
+      expect(page).to have_content "Log in"
     end
   end
 end
