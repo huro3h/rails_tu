@@ -29,6 +29,7 @@ class User < ApplicationRecord
   end
 
   def authenticated?(remember_token_in_auth)
+    return false if remember_digest.blank?
     BCrypt::Password.new(remember_digest).is_password?(remember_token_in_auth)
   end
 

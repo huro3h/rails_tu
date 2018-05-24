@@ -68,4 +68,9 @@ describe User do
     user.password = "pass"
     expect(user.save).to eq false
   end
+
+  it '#authenticated?' do
+    expect(user.authenticated?(nil)).to eq false
+    expect(user.authenticated?('')).to eq false
+  end
 end
