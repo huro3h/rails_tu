@@ -6,6 +6,8 @@
   </head>
 
   <body>
+    <%= session.to_h %>
+    <%= cookies.to_h %>
     <%= render partial: 'layouts/header' %>
     <!-- integrate messages into iterator -->
     <% flash.each do |message_type, message| %>
