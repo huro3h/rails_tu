@@ -38,6 +38,17 @@ input {
   }
 }
 
+.checkbox {
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#remember_me {
+  margin-left: -2px;
+}
+
 /* sidebar */
 aside {
   section.user_info {
