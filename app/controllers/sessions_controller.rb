@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       flash.now[:success] = 'ログインしました'
       log_in user
-      remember user
+      params[:remember_me] == "1" ? remember(user) : forget(user)
       redirect_to user
     else
       flash.now[:danger] = 'Emailまたはパスワードが異なります'
