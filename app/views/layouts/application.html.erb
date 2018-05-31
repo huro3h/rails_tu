@@ -5,7 +5,7 @@
     <%= render partial: 'layouts/rails_default' %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <%= session.to_h %>
     <%= cookies.to_h %>
     <%= render partial: 'layouts/header' %>
@@ -13,7 +13,7 @@
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
     <% end %>
-    <div class="container">
+    <div class="container "><%=  %>
       <%= yield %>
       <%= render partial: 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
