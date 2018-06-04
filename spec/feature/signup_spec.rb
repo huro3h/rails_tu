@@ -8,8 +8,8 @@ feature 'signupページ' do
       fill_in "Name", with: "test_test"
       fill_in "Email", with: "test@example.com"
       fill_in "Password", with: "password"
-      fill_in "Confirmation", with: "password"
-      click_button 'Create my account'
+      fill_in "Password confirmation", with: "password"
+      click_button 'Registration'
 
       expect(current_path).to eq "/users/#{User.last.id}"
       expect(page).to have_content "Log out"
@@ -18,11 +18,10 @@ feature 'signupページ' do
     scenario '必須項目が抜けていたらエラーが表示されること' do
       fill_in "Email", with: "test@example.com"
       fill_in "Password", with: "password"
-      fill_in "Confirmation", with: "password"
-      click_button 'Create my account'
+      fill_in "Password confirmation", with: "password"
+      click_button 'Registration'
 
       expect(page).to have_css '.alert-danger'
-      expect(current_path).to eq signup_path
     end
   end
 end
