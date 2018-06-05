@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature 'signupページ' do
-  context 'signupページにアクセスした時' do
+  context 'アクセスした時' do
     before { visit "/signup" }
 
     scenario 'ユーザー登録完了後、個別ページへ遷移すること' do

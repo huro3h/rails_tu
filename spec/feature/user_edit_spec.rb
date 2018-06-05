@@ -2,7 +2,7 @@
 require "rails_helper"
 
 feature "editページ" do
-  context 'editページの時' do
+  context 'アクセスした時' do
     let!(:user) { create(:user) }
     before do
       visit login_path
@@ -25,6 +25,22 @@ feature "editページ" do
       fill_in "Password confirmation", with: "aaaaa"
       click_button "Save changes"
       expect(page).to have_content 'Password is too short'
+    end
+
+    scenario '名前が正しく変更できること' do
+      fill_in "Name", with: "john"
+      fill_in "Password", with: "aaaaaaaa"
+      fill_in "Password confirmation", with: "aaaaaaaa"
+      click_button "Save changes"
+      expect(User.last.name).to eq 'john'
+    end
+
+    scenario 'メールアドレスが正しく変更できること' do
+      fill_in "Email", with: "test@example.com"
+      fill_in "Password", with: "aaaaaaaa"
+      fill_in "Password confirmation", with: "aaaaaaaa"
+      click_button "Save changes"
+      expect(User.last.email).to eq 'test@example.com'
     end
   end
 end
