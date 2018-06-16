@@ -1,5 +1,7 @@
 {
   "name": "rails_tu55",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
 }

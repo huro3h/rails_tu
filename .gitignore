@@ -43,7 +43,7 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-#Ignore other files
+#Ignore other files and directory
 doc/
 *.swp
 *~
@@ -57,3 +57,4 @@ config/credentials.yml.enc
 vendor/assets/bower_components
 public/assets
 dump.rdb
+node_modules/
