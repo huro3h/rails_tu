@@ -2,7 +2,7 @@ ruby_image: &ruby_image
   circleci/ruby:2.5.1-node-browsers
 
 bundle_cache_key: &bundle_cache_key
-  bundle-{{ checksum "Gemfile.lock" }}
+  bundle-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
 
 version: 2
 
@@ -31,17 +31,15 @@ jobs:
 
       - run: bundle install -j4 --retry=3 --path vendor/bundle
 
+      - run: yarn
+
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
         key: *bundle_cache_key
-        paths: vendor/bundle
-
-      # bower install
-      - run: sudo npm install bower -g
-
-      # Install packages via bower-rails
-      - run: bundle exec rails bower:install
+        paths:
+          - .vendor/bundle
+          - ./node_modules
 
       # Wait for DB
       - run:
